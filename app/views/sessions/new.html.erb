@@ -1,24 +1,24 @@
- <div style="text-align:center;"> 
- <h1>Login</h1>
+<div style="text-align:center;"> 
+  <h1>Login</h1>
  </div>
 <div class="w-25 container">
- <%= form_tag 'login'  do  %>
+  <%= form_tag 'login'  do  %>
     <div class="mb-3">
-    <%= label_tag 'Email' %><br>
-    <%= text_field_tag :email , params[:email] %>
-  </div>
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %><br>
-    <%= link_to "Forgot your password?", password_reset_path %>
-  </div>
-  <div>
-    <%= submit_tag "Log in "%>
-  </div>
- <% flash.each do |type, msg| %>
-  <div class="alert alert-info">
-    <%= msg %>
-  </div>
-<% end %>
+      <%= label_tag 'Email' %><br>
+      <%= text_field_tag :email , params[:email] %>
+    </div>
+    <div>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %><br>
+      <%= link_to "Forgot your password?", password_reset_path %>
+    </div>
+    <div>
+      <%= submit_tag "Log in "%>
+    </div>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+       </div>
+    <% end %>
 <%end %>
 </div>

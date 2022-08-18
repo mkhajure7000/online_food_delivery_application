@@ -3,15 +3,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+#  root "mains#routes"
+  root "mains#index"
   resources :users
-  get '/' => 'mains#index'
-  get "login" => "sessions#new"
-  post "login" => "sessions#create"
-  delete "logout" => "sessions#destroy"
-  get "password/reset" => "password_resets#new"
-  post "password/reset" => "password_resets#create"
-  get "password/reset/edit" => "password_resets#edit"
-  patch "password/reset/edit" => "password_resets#update"
-  # resources :mains
+  resources :mains
   resources :restaurants
+  get 'login' , to: 'sessions#new'
+  post 'login' , to: 'sessions#create'
+  delete 'logout' , to: 'sessions#destroy'
+  get 'password/reset' , to: 'password_resets#new'
+  post 'password/reset' , to: 'password_resets#create'
+  get 'password/reset/edit' , to: "password_resets#edit"
+  patch "password/reset/edit" , to: "password_resets#update"
 end

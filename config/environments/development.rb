@@ -81,4 +81,5 @@ Rails.application.configure do
     password: "fzzvkeruowbwhjsu", 
     domain: "smtp.gmail.com",
     openssl_verify_mode: "none",
+  }
 end
