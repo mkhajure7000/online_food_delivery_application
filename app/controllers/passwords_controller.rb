@@ -1,4 +1,4 @@
-class PasswordResetsController < ApplicationController
+class PasswordsController < ApplicationController
 
   def index; end
 
@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
         #send email
         PasswordMailer.with(user: @user).reset.deliver_now
       end
-    redirect_to password_reset_path, notice: "If an account with that email was found, we have sent a link to reset your password"
+    redirect_to password_path, notice: "If an account with that email was found, we have sent a link to reset your password"
   end
     
   def edit
@@ -27,8 +27,8 @@ class PasswordResetsController < ApplicationController
   end
 
   private 
-    def password_params
-      params.required(:user).permit(:password, :password_confirmation)
-    end
+  def password_params
+    params.required(:user).permit(:password, :password_confirmation)
+  end
 
 end

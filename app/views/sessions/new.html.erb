@@ -1,6 +1,4 @@
-<div style="text-align:center;"> 
-  <h1>Login</h1>
- </div>
+<h1>Login</h1>
 <div class="w-25 container">
   <%= form_tag 'login'  do  %>
     <div class="mb-3">
@@ -10,15 +8,11 @@
     <div>
       <%= label_tag :password %>
       <%= password_field_tag :password %><br>
-      <%= link_to "Forgot your password?", password_reset_path %>
+      <%= link_to "Forgot your password?", password_path %>
     </div>
     <div>
       <%= submit_tag "Log in "%>
     </div>
-    <% flash.each do |type, msg| %>
-      <div class="alert alert-info">
-        <%= msg %>
-       </div>
-    <% end %>
+    <%= render 'layouts/flash', message: flash%>
 <%end %>
 </div>

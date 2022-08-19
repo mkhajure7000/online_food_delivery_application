@@ -1,6 +1,4 @@
-<div style="text-align:center;"> 
 <h1>Sign up</h1>
-</div>
 <div class="w-25 container">
 <%= form_with model: @user do |form| %>
   <%if @user.errors.any? %>
@@ -33,10 +31,6 @@
   <div>
     <%= form.submit "signup" %>
   </div>
-  <% flash.each do |type, msg| %>
-    <div class="alert alert-info">
-    <%= msg %>
-    </div>
-  <% end %>
+  <%= render 'layouts/flash', message: flash%>
   </div>
 <% end %>

@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
     
-  def index; end
+  def index
+    @user = User.find(session[:user_id]);
+  end
   
   def new; end
 
@@ -8,7 +10,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-        # redirect_to '/', notice: "login successfully"
       if @user.is_admin
         redirect_to restaurants_path
       else
@@ -21,8 +22,7 @@ class SessionsController < ApplicationController
     
   def destroy
     session[:user_id] = nil 
-    lash[notice] = "log out "
-    redirect_to root_path, notice: "Logged out"
+    redirect_to login_path, notice: "Logged out"
   end
 
   end
