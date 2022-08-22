@@ -1,8 +1,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: test
-  password: rails
+  username: 
+  password: 
 
 
 development:
@@ -11,21 +11,22 @@ development:
   database: my_app_development
   pool:
   host: localhost
-  username: test
-  password: rails
+  username: 
+  password: 
 
 test:
   adapter: postgresql
   encoding: unicode
   database: my_app_test
   pool:
-  username: test
-  password: rails
+  username: 
+  password: 
 
 production:
   adapter: postgresql
   encoding: unicode
   database: my_app_production
   pool:
-  username: test
-  password: rails
+  username: 
+  password: 
+  
