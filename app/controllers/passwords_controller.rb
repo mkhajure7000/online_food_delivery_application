@@ -29,4 +29,8 @@ class PasswordsController < ApplicationController
     params.required(:user).permit(:password, :password_confirmation)
   end
 
+  def require_password
+    @user =  current_user.find_signed!(params[:token], purpose: "password_reset")
+  end
+
 end
