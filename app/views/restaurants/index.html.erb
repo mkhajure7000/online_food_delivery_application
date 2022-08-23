@@ -1,1 +1,9 @@
-<h1>Welcome Admin</h1>
+<h1>
+  Welcome Admin<br>
+  <%= link_to "Add Restaurant", new_restaurant_path, class: "btn btn-success" %>
+</h1>
+<div style="text-align:center;"> 
+<% @restaurants.each do |restaurant| %>
+  <%= link_to restaurant.name, food_path(restaurant) %><br>
+<% end %>
+</div>

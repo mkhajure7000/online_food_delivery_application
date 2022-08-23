@@ -21,4 +21,4 @@ class SessionsController < ApplicationController
     redirect_to root_path, notice: "Log out"
   end
 
-  end
+end

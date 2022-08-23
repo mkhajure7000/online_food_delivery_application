@@ -4,7 +4,6 @@ default: &default
   username: 
   password: 
 
-
 development:
   adapter: postgresql
   encoding: unicode
