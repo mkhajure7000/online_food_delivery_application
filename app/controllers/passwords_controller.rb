@@ -1,4 +1,5 @@
 class PasswordsController < ApplicationController
+  before_action :require_password, only: [:edit, :update]
 
   def index; end
 
@@ -11,13 +12,11 @@ class PasswordsController < ApplicationController
   end
     
   def edit
-    @user = User.find_signed!(params[:token], purpose: "password_reset")
     rescue ActiveSupport::MessageVerifier::InvalidSignature
     redirect_to new_session_path, alert: "Your token has expired, Please try it again"
   end
 
   def update
-    @user = User.find_signed!(params[:token], purpose: "password_reset")
     if @user.update(password_params)
       redirect_to new_session_path, notice: "Your Password was reset successfully, Please sign in."
     else
