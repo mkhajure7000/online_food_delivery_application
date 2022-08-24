@@ -1,5 +1,5 @@
 class PasswordsController < ApplicationController
-  before_action :require_password, only: [:edit, :update]
+  before_action :require_password, only: %i[edit update]
 
   def index; end
 

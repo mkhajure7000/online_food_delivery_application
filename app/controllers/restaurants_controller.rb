@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :require_restaurant, only: [:update, :edit,:destroy]
+  before_action :require_restaurant, only: %i[update edit destroy]
 
   def index
     @restaurants = current_user.restaurants.all
