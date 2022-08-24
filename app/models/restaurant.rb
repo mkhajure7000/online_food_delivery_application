@@ -6,6 +6,5 @@ class Restaurant < ApplicationRecord
   
   #VALIDATIONS
   validates :name, :address, presence: true
-  validates :name, uniqueness: true
 
 end

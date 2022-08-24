@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :require_restaurant, only: [:update, :destroy]
+  before_action :require_restaurant, only: [:update, :edit,:destroy]
 
   def index
     @restaurants = current_user.restaurants.all
@@ -19,21 +19,19 @@ class RestaurantsController < ApplicationController
     end
   end
     
-  def edit
-    @restaurant = current_user.restaurants.find(params[:id])
-  end
+  def edit;  end
 
   def update
     if @restaurant.update(restaurant_params)
       redirect_to restaurants_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
   
   def destroy
     @restaurant.destroy
-    redirect_to restaurants_path
+    redirect_to restaurants_path, status: :see_other
   end
 
   private
