@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :require_restaurant, only: %i[update edit destroy]
-
+  
   def index
     @restaurants = current_user.restaurants.all
   end
@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
   end
-    
+
   def create
     @restaurant = current_user.restaurants.new(restaurant_params)
     if @restaurant.save
@@ -19,7 +19,11 @@ class RestaurantsController < ApplicationController
     end
   end
     
-  def edit;  end
+  def edit
+    if @restaurant.nil?
+      redirect_to restaurants_path, notice: "restaurant  does not exists"
+    end
+  end
 
   def update
     if @restaurant.update(restaurant_params)
@@ -40,7 +44,7 @@ class RestaurantsController < ApplicationController
   end
 
   def require_restaurant
-    @restaurant = current_user.restaurants.find(params[:id])
+    @restaurant = current_user.restaurants.find_by(id: params[:id])
   end
 
 end

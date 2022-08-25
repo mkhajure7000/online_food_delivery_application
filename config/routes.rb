@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[index new create]
   resources :sessions, only: %i[new create destroy]
   resources :restaurants
-  resources :foods, only: %i[index show]
   get 'password' , to: 'passwords#new'
   post 'password' , to: 'passwords#create'
   get 'password/edit' , to: "passwords#edit"
