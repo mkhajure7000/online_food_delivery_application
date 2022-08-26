@@ -1,9 +1,9 @@
 <h1>Welcome Admin</h1>
 <h1><%= link_to "Add Restaurant", new_restaurant_path, class: "btn btn-success" %></h1>
-<h1><%= button_to "logout", {:controller => :sessions, :action => 'destroy', :id => current_user.id }, :method => :delete, class: "btn btn-success"%></h1>
-<div style="text-align:center;"> 
+<h1><%= button_to "logout", {controller: "sessions", action: "destroy", id: "current_user.id" }, :method => :delete, class: "btn btn-success"%></h1>
+<h1> 
   <% @restaurants.each do |restaurant| %>
-    <div class="card" style="width: 20rem; text-align:center;display:inline-block;">
+    <div class="card" style="width: 20rem; display:inline-block;">
       <img class="card-img-top" src="#" alt="Card image cap" height="200" width="200" style="border-radius:.60rem;">
       <div class="card-block">
         <h4 class="card-title"><%= restaurant.name %><br></h4>
@@ -14,4 +14,4 @@
       </div>
     </div>
   <% end %>
-</div>
+</h1>

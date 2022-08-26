@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :require_restaurant, only: %i[update edit destroy]
+  before_action :current_restaurant, only: %i[update edit destroy]
   
   def index
     @restaurants = current_user.restaurants.all
@@ -25,7 +25,8 @@ class RestaurantsController < ApplicationController
     if @restaurant.update(restaurant_params)
       redirect_to restaurants_path
     else
-      render :edit, status: :unprocessable_entity
+      flash[:register_errors] = @restaurant.errors.full_messages
+      redirect_to edit_restaurant_path, status: :unprocessable_entity
     end
   end
   
@@ -39,9 +40,9 @@ class RestaurantsController < ApplicationController
     params.require(:restaurant).permit(:name, :address)
   end
 
-  def require_restaurant
+  def current_restaurant
     @restaurant = current_user.restaurants.find_by(id: params[:id])
-    if @restaurant.nil?
+    if @restaurant.blank?
       redirect_to restaurants_path, notice: "restaurant  does not exists"
     end
   end
