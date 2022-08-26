@@ -19,11 +19,7 @@ class RestaurantsController < ApplicationController
     end
   end
     
-  def edit
-    if @restaurant.nil?
-      redirect_to restaurants_path, notice: "restaurant  does not exists"
-    end
-  end
+  def edit; end
 
   def update
     if @restaurant.update(restaurant_params)
@@ -45,6 +41,9 @@ class RestaurantsController < ApplicationController
 
   def require_restaurant
     @restaurant = current_user.restaurants.find_by(id: params[:id])
+    if @restaurant.nil?
+      redirect_to restaurants_path, notice: "restaurant  does not exists"
+    end
   end
 
 end
