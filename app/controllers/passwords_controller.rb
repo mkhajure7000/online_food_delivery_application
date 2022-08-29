@@ -8,17 +8,20 @@ class PasswordsController < ApplicationController
     if @user.present?
       PasswordMailer.with(user: @user).reset.deliver_now
     end
-    redirect_to password_path, notice: "If an account with that email was found, we have sent a link to reset your password"
+    flash[:notice] = "If an account with that email was found, we have sent a link to reset your password"
+    redirect_to password_path
   end
-    
+
   def edit
     rescue ActiveSupport::MessageVerifier::InvalidSignature
-    redirect_to new_session_path, alert: "Your token has expired, Please try it again"
+    flash[:alert] = "Your token has expired, Please try it again"
+    redirect_to new_session_path
   end
 
   def update
     if @user.update(password_params)
-      redirect_to new_session_path, notice: "Your Password was reset successfully, Please sign in."
+      flash[:notice] = "Your Password was reset successfully, Please sign in."
+      redirect_to new_session_path
     else
       render :edit  
     end

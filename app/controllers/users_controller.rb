@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to new_session_path
     else 
-      flash[:register_errors] = @user.errors.full_messages
+      flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path
     end
   end

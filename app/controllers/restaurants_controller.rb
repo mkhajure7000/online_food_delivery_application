@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to restaurants_path
     else
-      flash[:register_errors] = @restaurant.errors.full_messages
+      flash[:errors] = @restaurant.errors.full_messages
       redirect_to new_restaurant_path
     end
   end
@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.update(restaurant_params)
       redirect_to restaurants_path
     else
-      flash[:register_errors] = @restaurant.errors.full_messages
+      flash[:errors] = @restaurant.errors.full_messages
       redirect_to edit_restaurant_path, status: :unprocessable_entity
     end
   end
@@ -43,7 +43,8 @@ class RestaurantsController < ApplicationController
   def current_restaurant
     @restaurant = current_user.restaurants.find_by(id: params[:id])
     if @restaurant.blank?
-      redirect_to restaurants_path, notice: "restaurant  does not exists"
+      flash[:errors] = "Restaurent Does Not Exist!"
+      redirect_to restaurants_path
     end
   end
 
