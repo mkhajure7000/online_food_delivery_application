@@ -10,7 +10,7 @@ development:
   database: my_app_development
   pool:
   host: localhost
-
+  
 test:
   adapter: postgresql
   encoding: unicode

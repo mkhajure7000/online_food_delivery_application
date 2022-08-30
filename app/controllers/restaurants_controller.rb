@@ -14,8 +14,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.save
       redirect_to restaurants_path
     else
-      flash[:errors] = @restaurant.errors.full_messages
-      redirect_to new_restaurant_path
+      render :new, status: :unprocessable_entity
     end
   end
     
@@ -25,8 +24,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.update(restaurant_params)
       redirect_to restaurants_path
     else
-      flash[:errors] = @restaurant.errors.full_messages
-      redirect_to edit_restaurant_path, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
   

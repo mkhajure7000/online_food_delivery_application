@@ -12,14 +12,14 @@ class SessionsController < ApplicationController
         redirect_to users_path 
       end
     else
-      redirect_to new_session_path
-      flash[:errors] = "invalid password or email"
+      flash.now[:errors] = "invalid email or password"
+      render :new, status: :unprocessable_entity
     end
   end
     
   def destroy
-    session[:user_id] = nil
     flash[:notice] = "logout"
+    session[:user_id] = nil
     redirect_to root_path
   end
 end
