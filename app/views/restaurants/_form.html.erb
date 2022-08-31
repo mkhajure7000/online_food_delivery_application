@@ -1,0 +1,18 @@
+<div class="w-25 container">
+  <%= form_with model: @restaurant do |form| %>
+    <% if @restaurant.errors.full_messages.any? %>
+      <%= render 'shared/error', object: @restaurant %>
+    <%end%>
+    <%= form.label :restaurant_name %><br>
+    <div class="mb-3">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <%= form.label :Address %><br>
+    <div class="mb-3">
+      <%= form.text_field :address, class: "form-control" %>
+    </div>
+    <div>
+      <%= form.submit "Add"  %>
+    </div>
+  <% end %>
+</div>

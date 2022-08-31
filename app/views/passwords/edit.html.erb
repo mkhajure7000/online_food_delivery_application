@@ -1,9 +1,6 @@
 <h1>Reset Your Password</h1>
 <div class="w-25 container">
   <%= form_with model: @user, url: password_edit_path(token: params[:token]) do |form| %>
-    <%if @user.errors.any? %>
-      <%= render 'layouts/flash', message: flash%>
-    <% end %>
     <%= form.label :password  %><br>
     <div class="mb-3">
       <%= form.password_field :password, class: "form-control" %>

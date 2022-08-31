@@ -4,14 +4,13 @@ default: &default
   username: 
   password: 
 
-
 development:
   adapter: postgresql
   encoding: unicode
   database: my_app_development
   pool:
   host: localhost
-
+  
 test:
   adapter: postgresql
   encoding: unicode
